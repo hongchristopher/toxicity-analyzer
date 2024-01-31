@@ -6,10 +6,10 @@ function ResultCard({result}) {
     <div>
     <Typography variant='h5'>Results</Typography>
     <Typography variant='p'>
-        Toxicity: {result[0]} <br></br>
-        Insult: {result[1]} <br></br>
-        Threat: {result[2]} <br></br>
-        Identity Attack: {result[3]}
+        <b>Toxicity:</b> {result["interpretations"][0]} <br></br>
+        <b>Insult:</b> {result["interpretations"][1]} <br></br>
+        <b>Threat:</b> {result["interpretations"][2]} <br></br>
+        <b>Identity Attack:</b> {result["interpretations"][3]}
     </Typography>
     </div>
     )

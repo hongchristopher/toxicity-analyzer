@@ -1,7 +1,6 @@
 from googleapiclient import discovery
-import json
 
-API_KEY = 'ENTER_YOUR_KEY'
+API_KEY = 'ENTER-YOUR-API-KEY'
 
 def formatMsg(msg):
     analyze_request = {
@@ -18,12 +17,11 @@ def analyzeMsg(msg):
     "v1alpha1",
     developerKey=API_KEY,
     discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
-    static_discovery=False,
-    )
+    static_discovery=False,)
     response = client.comments().analyze(body=analyze_request).execute()
+    
     toxicity = response['attributeScores']['TOXICITY']['summaryScore']['value']
     insult = response['attributeScores']['INSULT']['summaryScore']['value']
     threat = response['attributeScores']['THREAT']['summaryScore']['value']
     identity = response['attributeScores']['IDENTITY_ATTACK']['summaryScore']['value']
     return [toxicity, insult, threat, identity]
-
